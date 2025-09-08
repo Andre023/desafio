@@ -1,0 +1,11 @@
+gerar chave secreta:
+python3 -c 'import secrets; print(secrets.token_hex(32))'
+
+0f09024d1b482bf7d000bef93a933663973ee487bd683b4298412b90924e4b17
+
+
+docker-compose up airflow-init:
+
+docker-compose up
+
+docker-compose down
