@@ -62,6 +62,7 @@ x-airflow-common:
     AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: 'true'
     AIRFLOW__CORE__LOAD_EXAMPLES: 'true'
     AIRFLOW__API_AUTH__JWT_SECRET: '0f09024d1b482bf7d000bef93a933663973ee487bd683b4298412b90924e4b17'
+    AIRFLOW__WEBSERVER__SECRET_KEY: 'f7a7da4b65c694d09dbb448d71d20036cd2718f2df086872156d7471570c4c37'
     AIRFLOW__CORE__EXECUTION_API_SERVER_URL: 'http://airflow-apiserver:8080/execution/'
     # yamllint disable rule:line-length
     # Use simple http server on scheduler for health checks
@@ -78,6 +79,7 @@ x-airflow-common:
     - ${AIRFLOW_PROJ_DIR:-.}/logs:/opt/airflow/logs
     - ${AIRFLOW_PROJ_DIR:-.}/config:/opt/airflow/config
     - ${AIRFLOW_PROJ_DIR:-.}/plugins:/opt/airflow/plugins
+    - ./data:/opt/airflow/data
   user: "${AIRFLOW_UID:-50000}:0"
   depends_on:
     &airflow-common-depends-on
@@ -93,6 +95,7 @@ services:
         POSTGRES_DB: banvic
         POSTGRES_USER: data_engineer
         POSTGRES_PASSWORD: v3rysecur&pas5w0rd
+        POSTGRES_INITDB_ARGS: "--encoding=UTF8"
       volumes:
         - ./dbdata:/var/lib/postgresql/data
         - ./banvic.sql:/docker-entrypoint-initdb.d/banvic.sql
@@ -105,6 +108,7 @@ services:
         POSTGRES_DB: data_warehouse
         POSTGRES_USER: dw_user
         POSTGRES_PASSWORD: v3rysecur&pas5w0rd
+        POSTGRES_INITDB_ARGS: "--encoding=UTF8"
       volumes:
         - ./dw_data:/var/lib/postgresql/data
       ports:

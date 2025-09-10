@@ -1,0 +1,26 @@
+{"timestamp":"2025-09-10T01:03:58.030382","level":"info","event":"DAG bundles loaded: dags-folder, example_dags","logger":"airflow.dag_processing.bundles.manager.DagBundlesManager"}
+{"timestamp":"2025-09-10T01:03:58.031390","level":"info","event":"Filling up the DagBag from /opt/airflow/dags/dag_banvic.py","logger":"airflow.models.dagbag.DagBag"}
+{"timestamp":"2025-09-10T01:03:58.107203Z","level":"info","event":"Task instance is in running state","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-10T01:03:58.109915Z","level":"info","event":" Previous state of the Task instance: TaskInstanceState.QUEUED","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-10T01:03:58.110629Z","level":"info","event":"Current task name:extrair_dados_sql","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-10T01:03:58.111065Z","level":"info","event":"Dag name:pipeline_etl_banvic_final","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-10T01:03:58.111555Z","level":"info","event":"Iniciando extração de dados do SQL...","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-10T01:03:58.111160","level":"warning","event":"/home/airflow/.local/lib/python3.12/site-packages/airflow/models/connection.py:471: DeprecationWarning: Using Connection.get_connection_from_secrets from `airflow.models` is deprecated.Please use `get` on Connection from sdk(`airflow.sdk.Connection`) instead\n  warnings.warn(\n","logger":"py.warnings"}
+{"timestamp":"2025-09-10T01:03:58.125286","level":"info","event":"Connection Retrieved 'postgres_source'","logger":"airflow.hooks.base"}
+{"timestamp":"2025-09-10T01:03:58.133779Z","level":"info","event":"Extraindo tabela: agencias","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-10T01:03:58.322302Z","level":"info","event":"Tabela agencias salva em /opt/airflow/data/output/2025-09-10/sql/agencias.csv","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-10T01:03:58.323140Z","level":"info","event":"Extraindo tabela: clientes","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-10T01:03:58.366846Z","level":"info","event":"Tabela clientes salva em /opt/airflow/data/output/2025-09-10/sql/clientes.csv","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-10T01:03:58.367316Z","level":"info","event":"Extraindo tabela: colaboradores","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-10T01:03:58.396695Z","level":"info","event":"Tabela colaboradores salva em /opt/airflow/data/output/2025-09-10/sql/colaboradores.csv","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-10T01:03:58.397275Z","level":"info","event":"Extraindo tabela: contas","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-10T01:03:58.444748Z","level":"info","event":"Tabela contas salva em /opt/airflow/data/output/2025-09-10/sql/contas.csv","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-10T01:03:58.445216Z","level":"info","event":"Extraindo tabela: propostas_credito","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-10T01:03:58.512356Z","level":"info","event":"Tabela propostas_credito salva em /opt/airflow/data/output/2025-09-10/sql/propostas_credito.csv","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-10T01:03:58.512749Z","level":"info","event":"Extraindo tabela: colaborador_agencia","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-10T01:03:58.527201Z","level":"info","event":"Tabela colaborador_agencia salva em /opt/airflow/data/output/2025-09-10/sql/colaborador_agencia.csv","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-10T01:03:58.527697Z","level":"info","event":"Extração de dados do SQL concluída.","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-10T01:03:58.527821","level":"info","event":"Done. Returned value was: None","logger":"airflow.task.operators.airflow.providers.standard.operators.python.PythonOperator"}
+{"timestamp":"2025-09-10T01:03:58.552290Z","level":"info","event":"Task instance in success state","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-10T01:03:58.553201Z","level":"info","event":" Previous state of the Task instance: TaskInstanceState.RUNNING","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-10T01:03:58.560335Z","level":"info","event":"Task operator:<Task(PythonOperator): extrair_dados_sql>","chan":"stdout","logger":"task"}

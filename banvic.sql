@@ -20,8 +20,6 @@ SET row_security = off;
 -- Name: status_proposta; Type: TYPE; Schema: public; Owner: -
 --
 
-\c banvic
-
 CREATE TYPE public.status_proposta AS ENUM (
     'Enviada',
     'Validação documentos',

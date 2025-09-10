@@ -1,0 +1,12 @@
+{"timestamp":"2025-09-10T01:39:22.045407","level":"info","event":"DAG bundles loaded: dags-folder, example_dags","logger":"airflow.dag_processing.bundles.manager.DagBundlesManager"}
+{"timestamp":"2025-09-10T01:39:22.046282","level":"info","event":"Filling up the DagBag from /opt/airflow/dags/dag_banvic.py","logger":"airflow.models.dagbag.DagBag"}
+{"timestamp":"2025-09-10T01:39:22.238454Z","level":"info","event":"Task instance is in running state","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-10T01:39:22.239491Z","level":"info","event":" Previous state of the Task instance: TaskInstanceState.QUEUED","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-10T01:39:22.241025Z","level":"info","event":"Current task name:extrair_dados_csv","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-10T01:39:22.241440Z","level":"info","event":"Dag name:pipeline_etl_banvic_final","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-10T01:39:22.241930Z","level":"info","event":"Iniciando extração de dados do CSV...","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-10T01:39:22.680412Z","level":"info","event":"Arquivo transacoes.csv salvo em /opt/airflow/data/output/2025-09-10/csv","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-10T01:39:22.684709","level":"info","event":"Done. Returned value was: None","logger":"airflow.task.operators.airflow.providers.standard.operators.python.PythonOperator"}
+{"timestamp":"2025-09-10T01:39:22.725970Z","level":"info","event":"Task instance in success state","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-10T01:39:22.726742Z","level":"info","event":" Previous state of the Task instance: TaskInstanceState.RUNNING","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-10T01:39:22.727518Z","level":"info","event":"Task operator:<Task(PythonOperator): extrair_dados_csv>","chan":"stdout","logger":"task"}
