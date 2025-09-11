@@ -16,17 +16,15 @@ def extrair_csv(**kwargs):
     data_execucao = kwargs['ds']
     
     caminho_origem = '/opt/airflow/data/transacoes.csv'
+    df = pd.read_csv(caminho_origem, sep=';')
 
     # Caminho no data lake local.
-    caminho_destino_dir = f'/opt/airflow/data/output/{data_execucao}/csv'
-    os.makedirs(caminho_destino_dir, exist_ok=True)
-
-    df = pd.read_csv(caminho_origem, sep=';')
-    
+    caminho_destino = f'/opt/airflow/data/output/{data_execucao}/csv'
+    os.makedirs(caminho_destino, exist_ok=True) # cria o diretório se não existir.
     # Salvando o DataFrame como um novo arquivo CSV no destino.
-    df.to_csv(f'{caminho_destino_dir}/transacoes.csv', index=False, sep=';')
+    df.to_csv(f'{caminho_destino}/transacoes.csv', index=False, sep=';')
     
-    print(f"Arquivo salvo na pasta {caminho_destino_dir}")
+    print(f"Arquivo salvo na pasta {caminho_destino}")
 
 def extrair_sql(**kwargs):
     
@@ -43,15 +41,15 @@ def extrair_sql(**kwargs):
     # Lista de tabelas do arquivo banvic.sql.
     tabelas = ["agencias", "clientes", "colaboradores", "contas", "propostas_credito", "colaborador_agencia"]
     
-    caminho_destino_dir = f'/opt/airflow/data/output/{data_execucao}/sql'
-    os.makedirs(caminho_destino_dir, exist_ok=True)
+    caminho_destino = f'/opt/airflow/data/output/{data_execucao}/sql'
+    os.makedirs(caminho_destino, exist_ok=True)
     
     # Loop para extrair cada tabela.
     for tabela in tabelas:
         print(f"Extraindo tabela: {tabela}")
         df = pd.read_sql(f'SELECT * FROM public."{tabela}"', engine)
-        df.to_csv(f'{caminho_destino_dir}/{tabela}.csv', index=False, sep=';')
-        print(f"Tabela {tabela} salva em {caminho_destino_dir}/{tabela}.csv")
+        df.to_csv(f'{caminho_destino}/{tabela}.csv', index=False, sep=';')
+        print(f"Tabela {tabela} salva em {caminho_destino}/{tabela}.csv")
 
     print("Concluido.")
 
@@ -70,16 +68,16 @@ def carregar_dw(**kwargs):
     
     # Itera sobre as fontes (csv, sql) e carrega os arquivos.
     for fonte in ['csv', 'sql']:
-        caminho_completo_dir = os.path.join(diretorio_base, fonte)
+        caminho_completo = os.path.join(diretorio_base, fonte)
         
         # Pega todos os arquivos .csv do diretório.
-        arquivos_csv = [f for f in os.listdir(caminho_completo_dir) if f.endswith('.csv')]
+        arquivos_csv = [f for f in os.listdir(caminho_completo) if f.endswith('.csv')]
         
         for arquivo in arquivos_csv:
             # O nome da tabela no DW será o nome do arquivo sem a extensão '.csv'.
             nome_tabela = arquivo.replace('.csv', '')
             
-            caminho_arquivo = os.path.join(caminho_completo_dir, arquivo)
+            caminho_arquivo = os.path.join(caminho_completo, arquivo)
             df = pd.read_csv(caminho_arquivo, sep=';')
             
             # Usando o método .to_sql do Pandas para carregar os dados.
@@ -91,11 +89,11 @@ def carregar_dw(**kwargs):
 
 # --- Definição da DAG ---
 with DAG(
-    dag_id="pipeline_etl_banvic_final",
+    dag_id="pipeline_final",
     start_date=pendulum.datetime(2025, 9, 7, tz="UTC"),
     schedule="35 4 * * *",
     catchup=False,
-    tags=["banvic", "etl"],
+    tags=["banvic", "pipeline_final"],
 ) as dag:
     
     # --- Definição das Tarefas ---
